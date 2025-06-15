@@ -1923,13 +1923,13 @@ Public Class Main
         DataActions(CORRECTED_EFFICIENCY) = Function(x) x.Corr_Efficiency
 
         DataTags(TEMPERATURE1) = "Temperature1"
-        DataUnitTags(TEMPERATURE1) = "°C"
+        DataUnitTags(TEMPERATURE1) = "Â°C"
         DataUnits(TEMPERATURE1, 0) = 1
         Data(TEMPERATURE1, MINIMUM) = 10000
         DataActions(TEMPERATURE1) = Function(x) x.Temperature1
 
         DataTags(TEMPERATURE2) = "Temperature2"
-        DataUnitTags(TEMPERATURE2) = "°C"
+        DataUnitTags(TEMPERATURE2) = "Â°C"
         DataUnits(TEMPERATURE2, 0) = 1
         Data(TEMPERATURE1, MINIMUM) = 10000
         DataActions(TEMPERATURE2) = Function(x) x.Temperature2
@@ -3082,7 +3082,7 @@ Public Class Main
                             RPM2NewTriggerTime = CDbl(COMPortMessage(3)) / 1000000
                             RPM2ElapsedTime = CDbl(COMPortMessage(4)) / 1000000
                             If RPM2NewTriggerTime <> RPM2OldTriggerTime Then
-                                Data(RPM2, ACTUAL) = ElapsedTimeToRadPerSec / RPM2ElapsedTime
+                                Data(RPM2, ACTUAL) = ElapsedTimeToRadPerSec2 / RPM2ElapsedTime 'Uses channel 2's signals-per-revolution factor
                                 Data(RPM2_RATIO, ACTUAL) = Data(RPM2, ACTUAL) / Data(RPM1_WHEEL, ACTUAL)
                                 Data(RPM2_ROLLOUT, ACTUAL) = WheelCircumference / Data(RPM2_RATIO, ACTUAL)
                                 If Data(RPM2, ACTUAL) > Data(RPM2, MAXIMUM) Then
